@@ -2,8 +2,9 @@
 <html lang="fr">
 <head>
     <meta charset="utf-8">
-    <!-- <meta http-equiv="expires" content="0">
-    <meta http-equiv="pragma" content="no-cache"> -->
+
+   <!-- <meta http-equiv="expires" content="0">
+   <meta http-equiv="pragma" content="no-cache"> -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script> var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
@@ -11,13 +12,18 @@
     <link rel="stylesheet" type="text/css" href="{{ url_for('.static', filename='monstyle.css', v=0.01) }}" />
     
 
-    <title>Retrouver les communes françaises par code postal</title>
+    <title>Communes françaises par code postal</title>
 
 </head>
 <body>
-<div id="call" align="center">Communes françaises par code postal - Lancez une recherche sur Wikidata</div>
-<div id="searchform"><form action="search" method= "post" width="90%" id="searchform" name="top">
-    <input pattern=".{4,5}" required title="Minimum de 4 caractères et un maximum de 5" type="search" placeholder="Code postal" name="search" id="search" required/>
+	<!-- ajouter le center dans le css pour la balise div id="call" -->
+	<div id="call"><h1>Communes françaises par code postal</h1> 
+		<p>Ce site lance une recherche sur Wikidata</p>
+		<p>Ce site est réalisé par Dimitri Gerson avec Python/Flask</p>
+	</div>
+<div id="searchforms">
+	<form action="search" method= "post" id="searchform" name="top">
+    <input pattern=".{4,5}" title="Minimum de 4 caractères et un maximum de 5" type="search" placeholder="Code postal" name="search" id="search" required/>
     <button type="submit" id="boutonRecherche" class="searchbutton" onclick="
     var val = document.getElementById('search').value;
     if (val.length == 5 || val.length == 4) {
@@ -26,13 +32,14 @@
 
     }
     ">Rechercher</button>
-</form></div>
+</form>
+</div>
 
 <div id="content">
-	<div id="loading" align="center" >
-		<img src="/static/images/wait.gif" />
+	<div id="loading" >
+		<img src="/static/images/wait.gif" alt="Image pour l'attente du chargement" />
 	</div>
-    <div id="Commentaire" align="center">
+    <div id="Commentaire">
         {% if items is defined %}
             {% if items|length == 0 %}
                 <p style="color:darkgray;">Aucun résultat sur Wikidata pour ce code postal.</p>
