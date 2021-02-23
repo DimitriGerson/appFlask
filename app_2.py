@@ -2,8 +2,12 @@ from flask import Flask, request, render_template, jsonify
 from SPARQLWrapper import SPARQLWrapper, JSON
 from wikidata import WIKIDATA_REQUEST1, WIKIDATA_REQUEST2
 from urllib.error import HTTPError
+import os
 
-app = Flask(__name__)
+WEBDIR = os.path.dirname(os.path.abspath('__files__'))
+PAGESDIR = os.path.join(os.path.dirname(WEBDIR), 'essais/templates')
+STATICDIR = os.path.join(os.path.dirname(WEBDIR), 'essais/static/')
+app = Flask(__name__, template_folder=PAGESDIR, static_folder=STATICDIR)
 
 endpoint_url = "https://query.wikidata.org/sparql"
 def get_results(endpoint_url, query):

@@ -8,10 +8,9 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script> var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
-    
-    <link rel="stylesheet" type="text/css" href="{{ url_for('.static', filename='monstyle.css', v=0.01) }}" />
-    
-
+    <link rel="icon" type="image/png" href="{{ url_for('static',filename='images/icon.png') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/monstyle2.css') }}" />
+    <!-- retirer , v=0.01 apres css' -->
     <title>Communes françaises par code postal</title>
 
 </head>
@@ -36,17 +35,17 @@
 </div>
 
 <div id="content">
-	<div id="loading" >
-		<img src="/static/images/wait.gif" alt="Image pour l'attente du chargement" />
+	<div id="loading">
+		<img src="/static/images/wait.gif" alt="Image pour l'attente du chargement" class="centrer_image">
 	</div>
     <div id="Commentaire">
         {% if items is defined %}
             {% if items|length == 0 %}
-                <p style="color:darkgray;">Aucun résultat sur Wikidata pour ce code postal.</p>
+                <p class="centrer" style="color:darkgray;">Aucun résultat sur Wikidata pour ce code postal.</p>
             {% elif items|length == 1 %}
-            	<p style="color:darkgray;">Une seule commune issue de Wikidata.</p>
+            	<p class="centrer" style="color:darkgray;">Une seule commune issue de Wikidata.</p>
             {% else %}
-                <p style="color:darkgray;">{{ items|length }} communes issues Wikidata.</p>
+                <p class="centrer" style="color:darkgray;">{{ items|length }} communes issues Wikidata.</p>
             {% endif %}
         {% endif %}
     </div>
