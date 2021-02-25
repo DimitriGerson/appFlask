@@ -42,6 +42,7 @@ def search():
     if request.method == 'POST' :
         #Aller chercher dans le fomulaire les données de la balise qui à l'id 'search'
         search = request.form['search']
+        la_recherche = search
         #passer search en miniscule
         search = search.lower()
         print(search)
@@ -66,7 +67,7 @@ def search():
                 listResults.append(result)
         except:
             print("Erreur déclenchée")
-        return render_template('index2.html', items = results)
+        return render_template('index2.html', items = results,codepostal =  la_recherche)
 
 if __name__ == '__main__':
     app.run()

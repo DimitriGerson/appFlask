@@ -41,11 +41,11 @@
     <div id="Commentaire">
         {% if items is defined %}
             {% if items|length == 0 %}
-                <p class="centrer" style="color:darkgray;">Aucun résultat sur Wikidata pour ce code postal.</p>
+	    <p class="centrer" style="color:darkgray;">Aucun résultat sur Wikidata pour le code postal {{ codepostal }}.</p>
             {% elif items|length == 1 %}
-            	<p class="centrer" style="color:darkgray;">Une seule commune issue de Wikidata.</p>
+	    <p class="centrer" style="color:darkgray;">Une seule commune issue de Wikidata pour le code postal {{ codepostal }}.</p>
             {% else %}
-                <p class="centrer" style="color:darkgray;">{{ items|length }} communes issues Wikidata.</p>
+	    <p class="centrer" style="color:darkgray;">{{ items|length }} communes issues Wikidata pour le code postal {{ codepostal }}.</p>
             {% endif %}
         {% endif %}
     </div>

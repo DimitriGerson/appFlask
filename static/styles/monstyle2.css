@@ -8,6 +8,7 @@
     font-weight: bold;
     font-size: 28px;
     background-color: #F5F5FA;
+    margin-bottom: 0px;
 }
 #searchform {
     text-align: center;
@@ -37,6 +38,11 @@
     font-weight: bold;
     color: #33375F;
 }
+
+p {
+	margin-bottom: 0px;
+}
+
 p.centrer {
 	text-align: center;
 }
