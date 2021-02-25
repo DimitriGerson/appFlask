@@ -46,6 +46,12 @@ p {
 p.centrer {
 	text-align: center;
 }
+
+p.second {
+	font-size: 40px;
+	color: darkgray;
+ 
+}
 img.centrer_image {
 	display: block;
 	margin-left: auto;
