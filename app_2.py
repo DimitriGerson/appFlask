@@ -3,6 +3,8 @@ from SPARQLWrapper import SPARQLWrapper, JSON
 from wikidata import WIKIDATA_REQUEST1, WIKIDATA_REQUEST2
 from urllib.error import HTTPError
 import os
+from datetime import date
+import time
 
 WEBDIR = os.path.dirname(os.path.abspath('__files__'))
 PAGESDIR = os.path.join(os.path.dirname(WEBDIR), 'essais/templates')
@@ -27,6 +29,11 @@ def get_results(endpoint_url, query):
     except HTTPError as err:
         #la requete à rencontrée un problème j'affiche l'erreur dans la console
         print(err.code)
+
+@app.route('/date')
+def ladate():
+    d=date.today()
+    return render_template('accueil.html',la_date=d)
 
 @app.route('/')
 def index():
