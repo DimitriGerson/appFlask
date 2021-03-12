@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <title>Retrouvez le nom d'une commune avec son code postal</title>
+    <meta name="description" contenu="Retrouver une commune avec son code postal. Ce site est réalisé par le développeur Dimitri Gerson avec Python en Flask.">
+   <!-- <meta http-equiv="expires" content="0">
+   <meta http-equiv="pragma" content="no-cache"> -->
+
+   <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>-->
+    <!-- <script> var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>-->
+    <link rel="icon" type="image/png" href="{{ url_for('static',filename='images/icon.png') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='styles/monstyle2.css') }}" />
+    <!-- retirer , v=0.01 apres css' -->
+    <title>Communes françaises par code postal</title>
+
+</head>
+<body>
+	<!-- ajouter le center dans le css pour la balise div id="call" -->
+	<div id="call"><h1>Communes françaises par code postal</h1> 
+		<p>Ce site lance une recherche sur Wikidata</p>
+		<p>Ce site est réalisé par Dimitri Gerson avec Python/Flask</p>
+	</div>
+<div id="searchforms">
+	<form action="search" method= "post" id="searchform" name="top">
+    <input pattern="[0-9]{4,5}" title="Il faut entre 4 et 5 chiffres pour un code postal. Exemple : 56200" type="search" placeholder="Code postal" name="search" id="search" required/>
+    <button type="submit" id="boutonRecherche" class="searchbutton" onclick="recherche()
+	//$('div').remove('.suppression');
+    //var val = document.getElementById('search').value;
+	//const regex =new RegExp('[0-9]{4,5}');
+    //if (regex.test(val)==false){
+//								    document.getElementById('abruti').innerText='Attention votre requête n\'est toujours pas valide !';
+//	}
+
+	// if (val.length == 5 || val.length == 4) { 
+       	
+//	else {
+  // 	$('div').remove('.suppression2');
+//	$('#loading').show();
+  //  	document.getElementById('Commentaire').innerText='';
+
+   // }
+    ">Rechercher</button>
+</form>
+</div>
+
+<div id="content">
+	<div id="loading">
+		<img src="/static/images/wait.gif" alt="Image pour l'attente du chargement" class="centrer_image"><p class="centrer"> La requête est en cours d'execution veuillez patienter...</p>
+	</div>
+	<div id="abruti" class="centrer suppression2"></div>
+    <div id="Commentaire" class="suppression">
+        {% if items is defined %}
+            {% if items|length == 0 %}
+	    <p class="centrer second">Aucun résultat sur Wikidata pour le code postal {{ codepostal }}.</p>
+            {% elif items|length == 1 %}
+	    <p class="centrer second">Une seule commune issue de Wikidata pour le code postal {{ codepostal }}.</p>
+            {% else %}
+	    <p class="centrer second">{{ items|length }} communes issues de Wikidata pour le code postal {{ codepostal }}.</p>
+            {% endif %}
+        {% endif %}
+    </div>
+
+    <div style="margin:5px auto; width:50%;" id="res" class="suppression">
+        <table>
+            {% for item in items %}
+                <tr style="border: dashed black; border-width: 1px; ">
+                    <td width="40%" valign="top">
+                        {% if item.image is defined %}
+                            <img src="{{ item.image.value }}" width="75%" />
+                        {% endif %}
+                    </td>
+                    <td align="left" width="50%" valign="top">
+                        <h1><a href="{{ item.commune.value }}" id="nom_ville">{{ item.communeLabel.value }}</a></h1>
+                        <ul>
+                            {% if item.population is defined %}<li>
+                                Population : {{ item.population.value }} habitants
+                            </li>{% endif %}
+                            {% if item.superficie is defined %}<li>
+                                Superficie : {{ item.superficie.value }} km<sup>2</sup>
+                            </li>{% endif %}
+                            {% if item.altitude is defined %}<li>Altitude : {{ item.altitude.value }} mètres</li>{% endif %}
+                            {% if item.site is defined %}
+                                <li><a href="{{ item.site.value }}">Site web</a></li>
+                            {% endif %}
+                        </ul>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+<div class="Presentation centrer"><h3>Voici d'autres sites réalisé par Dimitri Gerson</h3>
+<div>	<a class="centrer" href="https://dimitrigerson.github.io/hello-world/">Un site de présentation réalisé avec github et github actions</a>
+</div>
+<div><a class="centrer" href="https://fast-sea-53219.herokuapp.com">Un site en REACT</a>
+</div>
+</div>
+<script src="static/Javascript/bouton_recherche.js"></script>
+    <script> var $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</body>
+
+</html>
