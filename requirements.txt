@@ -70,4 +70,3 @@ virtualenv==20.2.0
 Werkzeug==1.0.1
 xmltodict==0.11.0
 zipp==3.4.0
-zmq==0.0.0
