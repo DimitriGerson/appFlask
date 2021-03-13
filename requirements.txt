@@ -61,7 +61,6 @@ SPARQLWrapper==1.8.5
 sqlparse==0.4.1
 starlette==0.13.6
 toml==0.10.2
-urllib3==1.24.1
 uvicorn==0.12.2
 virtualenv==20.2.0
 Werkzeug==1.0.1
