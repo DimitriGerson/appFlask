@@ -41,7 +41,6 @@ psycopg2-pool==1.1
 py==1.10.0
 pyasn1==0.4.2
 pycrypto==2.6.1
-pycurl==7.43.0.2
 pydantic==1.7.2
 PyGObject==3.30.4
 pykerberos==1.1.14
