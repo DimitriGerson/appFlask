@@ -2,14 +2,9 @@ from flask import Flask, request, render_template, jsonify
 from SPARQLWrapper import SPARQLWrapper, JSON
 from wikidata import WIKIDATA_REQUEST1, WIKIDATA_REQUEST2
 from urllib.error import HTTPError
-import os
 from datetime import date
-import time
 
-WEBDIR = os.path.dirname(os.path.abspath('__files__'))
-PAGESDIR = os.path.join(os.path.dirname(WEBDIR), 'essais/templates')
-STATICDIR = os.path.join(os.path.dirname(WEBDIR), 'essais/static/')
-app = Flask(__name__, template_folder=PAGESDIR, static_folder=STATICDIR)
+app = Flask(__name__)
 
 endpoint_url = "https://query.wikidata.org/sparql"
 def get_results(endpoint_url, query):
@@ -30,14 +25,26 @@ def get_results(endpoint_url, query):
         #la requete à rencontrée un problème j'affiche l'erreur dans la console
         print(err.code)
 
-@app.route('/date')
-def ladate():
-    d=date.today()
-    return render_template('accueil.html',la_date=d)
-
 @app.route('/')
+@app.route('/search')
 def index():
-    return render_template('index2.html')
+    return render_template('index4.html')
+
+@app.route('/discussion')
+@app.route('/discussion/page/<int:num_page>')
+def mon_chat(num_page=1):
+    premier_msg = 1 + 50 * (num_page -1)
+    dernier_msg = premier_msg + 50
+    return 'affichages des messages {} à {}'.format(premier_msg, dernier_msg)
+
+@app.errorhandler(404)
+def page_404(error):
+    return "Voici ma Jolie page 404", 404
+
+@app.route('/date')
+def date():
+    d = date.today().isoformat()
+    return render_template('accueil.html', la_date=d)
 
 #quand le bouton du formulaire sur le fichier html va être cliqué
 #l'utilisateur va accéder à la page search grâce à action="search"
@@ -74,7 +81,7 @@ def search():
                 listResults.append(result)
         except:
             print("Erreur déclenchée")
-        return render_template('index2.html', items = results,codepostal =  la_recherche)
+        return render_template('index4.html', items = results, codepostal = la_recherche )
 
 if __name__ == '__main__':
     app.run()

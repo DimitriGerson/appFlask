@@ -1,0 +1,88 @@
+
+@import url('https://fonts.googleapis.com/css?family=Raleway&display=swap');
+
+#call {
+    text-align: center;
+    padding-top: 24px;
+    color: #33375F;
+    font-weight: bold;
+    font-size: 28px;
+    background-color: #F5F5FA;
+}
+#searchform {
+    text-align: center;
+    padding-top: 24px;
+    background-color: #F5F5FA;
+    padding-bottom: 24px;
+}
+
+#boutonRecherche {
+    background: linear-gradient(135deg, #3043FD 0%, #33375F 100%);
+    border-radius: 36px;
+    border: 0px solid;
+    color: white;
+    padding: 8px 16px 9px 16px;
+    font-weight: bold;
+    font-family: Raleway;
+    
+    cursor: pointer;
+}
+
+#loading {
+    display : none;
+}
+
+#Commentaire {
+    font-size: 16px;
+    font-weight: bold;
+    color: #33375F;
+}
+
+p {
+	margin-bottom: 0px;
+}
+p.centrer {
+	text-align: center;
+}
+
+p.second {
+	font-size: 40px;
+	color: darkgray;
+}
+.centrer {
+	text-align: center;
+	font-size: 20px;
+	color: blue;
+}
+
+.suppression2 {
+	margin-top: 40px;
+}
+
+img.centrer_image {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+body { 
+	font-family: Raleway;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #F5F5FA;}
+
+td{font-size: 10pt;}
+th{font-size: 10pt;}
+p{font-size: 10pt;}
+
+a{ color:#33375F; }
