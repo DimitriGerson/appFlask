@@ -55,7 +55,7 @@ python-multipart==0.0.5
 pytz==2020.4
 pywinrm==0.3.0
 pyxdg==0.25
-PyYAML==3.13
+PyYAML==5.1
 pyzmq==20.0.0
 rdflib==5.0.0
 requests==2.21.0
