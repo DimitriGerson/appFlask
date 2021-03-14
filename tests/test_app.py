@@ -2,6 +2,7 @@ import os
 import pytest
 from app import app
 from flask import url_for
+from werkzeug.datastructures import Headers
 import time 
 @pytest.fixture
 def client():
@@ -29,3 +30,10 @@ def test_recherche(client):
     rv = client.post('/search', data= {'search': '56200'})
     assert rv.status_code == 200
 
+def test_recherche(client):
+    rv = client.post('/search', data= {'search': 'bob'})
+    assert rv.status == "200 OK"
+    d =Headers()
+    d.add('Content-Type', 'text/html; charset=utf-8')
+    d.add('Content-Length', '3155')
+    assert rv.headers == d
