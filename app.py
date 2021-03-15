@@ -63,14 +63,14 @@ def mon_chat(num_page=1):
     return 'affichages des messages {} à {}'.format(premier_msg, dernier_msg)
 
 @app.errorhandler(404)
-def page_404():
+def page_404(adresse):
     """
         This function is for create my personnal error 404 page
         pylint n'aime pas le error dans page_404(error)je le remplace
         par page_404(): vu que je ne me sert pas de error
     """
     return "Voici ma Jolie page 404", 404
-
+    #return "Voici ma Jolie page 404"
 @app.route('/date')
 def date_du_jour():
     """

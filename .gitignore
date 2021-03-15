@@ -1,7 +1,6 @@
 #Voici mon .gitignore
 __pycache__/app_2.cpython-37.pyc
 __pycache__/wikidata.cpython-37.pyc
-__pycache__/*
 __pycache__/
 
 
