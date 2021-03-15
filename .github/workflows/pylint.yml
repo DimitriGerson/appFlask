@@ -4,7 +4,7 @@ name: CI/Python PyLint
 
 # Controls when the action will run. 
 on: [push]
-  # Triggers the workflow on push for branch travail or pull request events but only for the master branch
+
   push:
     branches: [ travail ]
   pull_request:
