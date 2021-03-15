@@ -88,38 +88,36 @@ def search():
     """
         This function made the answer of client request
     """
-    #Si la methode est bien 'POST'
-    if request.method == 'POST' :
-        #Aller chercher dans le fomulaire les données de la balise qui à l'id 'search'
-        the_search = request.form['search']
-        la_recherche = the_search
-        #passer search en miniscule
-        the_search = the_search.lower()
-        print(the_search)
-        #Dans le cas où le code postal ne comporte que 4 chiffre rajouter un 0 devant
-        if len(the_search) == 4:
-            the_search= "0" + the_search
-        #création de la requete par concaténation des deux morceaux de requete
-        #et de l'insertion de l'entrée utilisateur search
-        wikidata_request_send = WIKIDATA_REQUEST1 + "\"" + the_search + "\"" + WIKIDATA_REQUEST2
-        print(wikidata_request_send)
-        #utilisation de la fonction get_result avec comme paramètres
-        #l'adresse du site wikidata la constante endpoint_url
-        #et la requete wikidata_request_send
-        #le resultat de la requete est stocké dans la variable results
-        results = get_results(wikidata_request_send)
-        #creation d'une liste vide qui va contenir les données
-        list_results = []
-        #J'ai l'impression que je ne me sert pas de list_results
-        try:
-            #creation d'une table à plat qui permet d'accéder aux données facilement
-            results = results["results"]["bindings"]
-            for result in results:
-                list_results.append(result)
-        except (RuntimeError, TypeError, NameError):
-            print("Erreur déclenchée")
-            return None
-        return render_template('index4.html', items = results, codepostal = la_recherche )
+     #Aller chercher dans le fomulaire les données de la balise qui à l'id 'search'
+    the_search = request.form['search']
+    la_recherche = the_search
+    #passer search en miniscule
+    the_search = the_search.lower()
+    print(the_search)
+    #Dans le cas où le code postal ne comporte que 4 chiffre rajouter un 0 devant
+    if len(the_search) == 4:
+        the_search= "0" + the_search
+    #création de la requete par concaténation des deux morceaux de requete
+    #et de l'insertion de l'entrée utilisateur search
+    wikidata_request_send = WIKIDATA_REQUEST1 + "\"" + the_search + "\"" + WIKIDATA_REQUEST2
+    print(wikidata_request_send)
+    #utilisation de la fonction get_result avec comme paramètres
+    #l'adresse du site wikidata la constante endpoint_url
+    #et la requete wikidata_request_send
+    #le resultat de la requete est stocké dans la variable results
+    results = get_results(wikidata_request_send)
+    #creation d'une liste vide qui va contenir les données
+    list_results = []
+    #J'ai l'impression que je ne me sert pas de list_results
+    try:
+        #creation d'une table à plat qui permet d'accéder aux données facilement
+        results = results["results"]["bindings"]
+        for result in results:
+            list_results.append(result)
+    except (RuntimeError, TypeError, NameError):
+        print("Erreur déclenchée")
+        return None
+    return render_template('index4.html', items = results, codepostal = la_recherche )
 
 if __name__ == '__main__':
     app.run()
