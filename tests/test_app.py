@@ -23,8 +23,9 @@ def test_search(client):
     assert rv.status_code == 200
 
 def test_erreur404(client):
-    rv = client.get('/caca')
-    assert rv.status_code == 404
+    rv = client.get()
+    print(rv.status_code)
+    assert rv.status_code == 200
 
 def test_recherche(client):
     rv = client.post('/search', data= {'search': '56200'})
