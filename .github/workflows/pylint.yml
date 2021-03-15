@@ -3,7 +3,7 @@
 name: CI/Python PyLint
 
 # Controls when the action will run. 
-on: [push]
+on:
 
   push:
     branches: [ travail ]
