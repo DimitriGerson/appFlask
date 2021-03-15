@@ -36,5 +36,5 @@ def test_recherche(client):
     assert rv.status == "200 OK"
     d =Headers()
     d.add('Content-Type', 'text/html; charset=utf-8')
-    d.add('Content-Length', '3155')
+    d.add('Content-Length', '3084')
     assert rv.headers == d
