@@ -31,7 +31,7 @@ netaddr==0.7.19
 ntlm-auth==1.1.0
 packaging==20.9
 paramiko==2.4.2
-Pillow==8.1.1
+Pillow==9.0.0
 pluggy==0.13.1
 postgres==3.0.0
 psycopg2-binary==2.8.6
