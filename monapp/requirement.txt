@@ -19,7 +19,7 @@ lazy-object-proxy==1.4.3
 MarkupSafe==1.1.1
 mccabe==0.6.1
 multiprocess==0.70.9
-paramiko==2.7.1
+paramiko==2.10.1
 pathlib==1.0.1
 psycopg2==2.8.5
 psycopg2-binary==2.8.5
